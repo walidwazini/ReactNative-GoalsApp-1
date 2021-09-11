@@ -14,7 +14,10 @@ export default function App() {
   }
   const addGoalHanlder = () => {
     console.log(enteredGoal)
-    setCourseGoals(currentGoals => [...courseGoals, enteredGoal])
+    setCourseGoals(currentGoals => [...courseGoals, {
+      key: Math.random().toString(),
+      val: enteredGoal
+    }])
   }
 
   return (
@@ -27,11 +30,13 @@ export default function App() {
         />
         <Button title='ADD' onPress={addGoalHanlder} />
       </View>
-      <FlatList data={courseGoals} renderItem={itemData => (
-        <View key={goal} style={styles.listItem} > 
-          <Text>{goal}</Text>
-        </View>
-      )} />
+      <FlatList
+        // FlatList automatically add keys to our item
+        data={courseGoals} renderItem={itemData => (
+          <View style={styles.listItem} >
+            <Text>{itemData.item}</Text>
+          </View>
+        )} />
 
       {/* <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" /> */}
