@@ -11,21 +11,20 @@ import GoalInput from './components/GoalInput';
 export default function App() {
   const [courseGoals, setCourseGoals] = useState([])
 
-  const addGoalHanlder = () => {
-    console.log(enteredGoal)
+  const addGoalHanlder = (goalTitle) => {
     setCourseGoals(currentGoals => [...courseGoals, {
-      id: Math.random().toString(), val: enteredGoal
+      id: Math.random().toString(), val: goalTitle
     }])
   }
 
   return (
     <View style={styles.screen}>
-      <GoalInput />
+      <GoalInput onAddGoal={addGoalHanlder} />
       <FlatList
       keyExtractor={(item, index) => item.id}
         // FlatList automatically add keys to our item
         data={courseGoals} renderItem={itemData => (
-         <GoalItem goalTitle={itemData.item.val} />
+         <GoalItem onDelete={() => console.log('Test Delete')} itemTitle={itemData.item.val} />
         )} />
 
       {/* <Text>Open up App.js to start working on your app!</Text>
