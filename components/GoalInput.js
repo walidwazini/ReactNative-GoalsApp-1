@@ -11,7 +11,7 @@ const GoalInput = (props) => {
     }
 
     return (
-        <Modal visible={props.visibleApp} animationType='slide' >
+        <Modal visible={props.visibleApp} animationType='fade' >
             <View style={styles.inputContainer} >
                 <TextInput
                     placeholder='Course Goal' style={styles.input}
@@ -27,14 +27,15 @@ const GoalInput = (props) => {
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center'
     },
     input: {
         width: '80%',
         borderColor: 'red',
         borderWidth: 1,
+        margin: 10,
         padding: 10
     },
 })

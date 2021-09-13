@@ -14,7 +14,9 @@ export default function App() {
     setCourseGoals(currentGoals => [...courseGoals, {
       id: Math.random().toString(), val: goalTitle
     }])
+    setIsAddMode(false)
   }
+  //  isAddMode used as toggle for Modalcomponent
   const [isAddMode, setIsAddMode] = useState(false);
   const removeGoalHandler = goalId => {
     setCourseGoals(currentGoals => {
