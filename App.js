@@ -27,12 +27,18 @@ export default function App() {
       // id need to fwd to the GoalItem
     })
   }
+  const cancelAdditionHandler = () => {
+    setIsAddMode(false)
+  }
 
 
   return (
     <View style={styles.screen}>
       <Button title='Add New Goal' onPress={() => setIsAddMode(true)} />
-      <GoalInput visibleApp={isAddMode} onAddGoal={addGoalHandlder1} />
+      <GoalInput 
+      visibleApp={isAddMode} 
+      onAddGoal={addGoalHandlder1} onCancel={cancelAdditionHandler} 
+      />
       <FlatList
         keyExtractor={(item, index) => item.id}
         // FlatList automatically add keys to our item

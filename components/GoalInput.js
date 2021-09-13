@@ -13,10 +13,7 @@ const GoalInput = (props) => {
         props.onAddGoal(enteredGoal)
         //  Make the input as empty string after add a goal
         setEnteredGoal('')
-        
     }
-
-
     return (
         <Modal visible={props.visibleApp} animationType='fade' >
             <View style={styles.inputContainer} >
@@ -26,6 +23,7 @@ const GoalInput = (props) => {
                     value={enteredGoal}
                 />
                 <Button title='ADD' onPress={addGoalHandlder2} />
+                <Button title='CANCEL' color='red' onPress={props.onCancel} />
             </View>
         </Modal>
 
