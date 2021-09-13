@@ -15,7 +15,7 @@ export default function App() {
       id: Math.random().toString(), val: goalTitle
     }])
   }
-  const removeGOalHandler = goalId => {
+  const removeGoalHandler = goalId => {
     setCourseGoals(currentGoals => {
       // goal in arg is object in currentGoals
       // id that match the goalId going to be remove
@@ -28,12 +28,17 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
+      <Button title='Add New Goal' onPress />
       <GoalInput onAddGoal={addGoalHanlder} />
       <FlatList
-      keyExtractor={(item, index) => item.id}
+        keyExtractor={(item, index) => item.id}
         // FlatList automatically add keys to our item
         data={courseGoals} renderItem={itemData => (
-         <GoalItem id={itemData.item.id} onDelete={() => console.log('Test Delete')} itemTitle={itemData.item.val} />
+          <GoalItem
+            id={itemData.item.id}
+            onDelete={removeGoalHandler}
+            itemTitle={itemData.item.val}
+          />
         )} />
 
       {/* <Text>Open up App.js to start working on your app!</Text>
